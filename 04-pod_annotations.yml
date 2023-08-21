@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx01
+  annotations:
+    abc.com-ecommerce-roboshop/component: nginx #only one / we can have it here and _ is not working and .s and -s are allowed
+spec:
+  containers:
+    - name: nginx
+      image: nginx

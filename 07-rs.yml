@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret02
+data:
+  URL: ZXhhjdjuhX #Base64 format
+  SUB_URL: THGHHskjj #Base64 format
+  DOMAIN: DBGGFkuukkjhj #Base64 format
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+      app: nginx
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          envFrom:
+            - secretRef:
+                name: secret02
