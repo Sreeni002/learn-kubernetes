@@ -7,4 +7,4 @@ spec:
     - name: nginx
       image: nginx
     - name: mongo
-      image: moongo
+      image: mongo
